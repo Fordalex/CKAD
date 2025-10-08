@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-app
+spec:
+  volumes:
+    - name: shared-logs
+      emptyDir: {}
+
+  initContainers:
+    - name: init-startup
+      image: busybox
+      command: ['sh', '-c', 'echo "App starting up..." > /shared/startup.log']
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /shared
+
+  containers:
+    - name: nginx
+      image: multi-container-pods:1.0
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log/nginx
+
+    - name: log-tailer
+      image: busybox
+      command: ['sh', '-c', 'tail -f /var/log/nginx/access.log']
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log/nginx
