@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodeweb
+  template:
+    metadata:
+      labels:
+        app: nodeweb
+    spec:
+      containers:
+      - name: nodeweb
+        image: workload-controllers:v1.0
+        ports:
+        - containerPort: 3000
