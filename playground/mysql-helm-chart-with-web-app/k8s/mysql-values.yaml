@@ -1,0 +1,16 @@
+image:
+  registry: docker.io
+  repository: bitnamilegacy/mysql
+  tag: "8.4.5"
+
+auth:
+  rootPassword: "rootpass123"
+  database: "testdb"
+  username: "testuser"  
+  password: "testpass123"
+
+primary:
+  persistence:
+    enabled: true
+    storageClass: "hostpath"
+    size: 8Gi
