@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-demo-pod
+spec:
+  volumes:
+    - name: ephemeral-logs
+      emptyDir: {}
+    - name: persistent-data
+      persistentVolumeClaim:
+        claimName: storage-demo-pvc
+  containers:
+    - name: nginx
+      image: nginx-storage-demo:1.0
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: persistent-data
+          mountPath: /usr/share/nginx/uploads
+        - name: ephemeral-logs
+          mountPath: /var/log/nginx
+          
