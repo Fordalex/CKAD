@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api
+  namespace: services-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      # TODO: Add label selector
+  template:
+    metadata:
+      labels:
+        # TODO: Add labels for app and tier
+    spec:
+      containers:
+      - name: http-echo
+        image: hashicorp/http-echo:0.2.3
+        args:
+        # TODO: Add args for text and listen port
+        ports:
+        - containerPort: 8080

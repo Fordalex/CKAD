@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: data-import
+  namespace: batch-processing
+spec:
+  completions: # TODO: Add completions
+  parallelism: # TODO: Add parallelism
+  backoffLimit: # TODO: Add backoffLimit
+  template:
+    spec:
+      containers:
+      - name: data-processor
+        image: busybox:1.35
+        command:
+        # TODO: Add command
+      restartPolicy: # TODO: Add restart policy

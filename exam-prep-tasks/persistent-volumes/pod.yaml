@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-db
+  namespace: database
+spec:
+  containers:
+  - name: postgres
+    image: postgres:14-alpine
+    env:
+    # TODO: Add POSTGRES_PASSWORD environment variable
+    volumeMounts:
+    # TODO: Add volume mount for PVC
+  volumes:
+  # TODO: Add volume referencing the PVC

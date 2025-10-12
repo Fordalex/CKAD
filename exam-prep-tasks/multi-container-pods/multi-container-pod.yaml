@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+  namespace: microservices
+spec:
+  initContainers:
+  # TODO: Add init container configuration
+  containers:
+  - name: main-app
+    image: nginx:1.21-alpine
+    volumeMounts:
+    # TODO: Add volume mounts
+  # TODO: Add sidecar container
+  volumes:
+  # TODO: Add volume definitions for shared-data and init-data

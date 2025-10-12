@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-policy
+  namespace: secure-app
+spec:
+  podSelector:
+    matchLabels:
+      # TODO: Add label selector for backend tier
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # TODO: Add ingress rules to allow traffic from frontend
+  egress:
+  # TODO: Add egress rules to allow traffic to database

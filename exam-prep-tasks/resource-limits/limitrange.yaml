@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: prod-limits
+  namespace: production
+spec:
+  limits:
+  - default:
+      # TODO: Add default limits
+    defaultRequest:
+      # TODO: Add default requests
+    max:
+      # TODO: Add max limits
+    min:
+      # TODO: Add min limits
+    type: Container

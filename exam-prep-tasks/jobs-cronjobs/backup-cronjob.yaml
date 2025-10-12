@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-job
+  namespace: batch-processing
+spec:
+  schedule: # TODO: Add cron schedule for every 5 minutes
+  concurrencyPolicy: # TODO: Add concurrency policy
+  successfulJobsHistoryLimit: # TODO: Add successful jobs history limit
+  failedJobsHistoryLimit: # TODO: Add failed jobs history limit
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup
+            image: busybox:1.35
+            command:
+            # TODO: Add command
+          restartPolicy: # TODO: Add restart policy
