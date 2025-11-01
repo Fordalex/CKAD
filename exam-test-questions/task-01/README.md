@@ -31,3 +31,9 @@ kubectl logs multi-app -c busybox-container
 ```
 
 Expected: Pod status should be `Running` with `2/2` containers ready.
+
+## Things learnt
+
+Using vim 'i' it enter insert mode and then 'esc' and :wq to 'write quit'
+Most of the spec section of a pod can't be edited!
+Just dry run if you want to create a pod then edit the config, which you can apply after editing.

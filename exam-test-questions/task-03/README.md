@@ -5,7 +5,7 @@
 
 ## Task
 
-1. Create a ConfigMap named `app-config` in the `default` namespace with the following key-value pairs:
+1. Create a ConfigMap named `app-config` in the `task3` namespace with the following key-value pairs:
    - `db_host=mysql.example.com`
    - `db_port=3306`
 
@@ -24,3 +24,13 @@ kubectl exec config-pod -- env | grep DB_
 ```
 
 Expected: Should show `DB_HOST=mysql.example.com` and `DB_PORT=3306`
+
+## Things learnt
+
+When you add `--from-literal` if you have mutliple values you have to re-write that for each key value pair.
+
+`kubectl set env deployment/app-config --from=configmap/app-config` this can be used if you have a deployment, if you are just creating a pod you'll need to edit the yaml with `kubectl edit config-pod` and changes this:
+
+envFrom:
+   - configMapRef:
+      name: app-config

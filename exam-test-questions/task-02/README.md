@@ -27,3 +27,7 @@ curl http://<node-ip>:30080
 ```
 
 Expected: Service should show `NodePort` type with port `30080`.
+
+## Things learnt
+
+You can't directly set the NodePort imperactively, you have to edit the service after creation.

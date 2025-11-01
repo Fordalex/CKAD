@@ -5,7 +5,7 @@
 
 ## Task
 
-1. Create a Secret named `db-secret` in the `default` namespace with:
+1. Create a Secret named `db-secret` in the `task4` namespace with:
    - `username=admin`
    - `password=P@ssw0rd123`
 
@@ -26,3 +26,28 @@ kubectl exec secret-pod -- cat /etc/db-config/password
 ```
 
 Expected: Files `username` and `password` should exist with correct values.
+
+# Things I've learnt
+
+I need to remember, running a pod is different to creating a deployment
+
+k create deployment deployment-name
+k run pod-name
+
+When creating a pod impreatively and adding a command, the command should come last and but done with --. example for a sleep 3600:
+
+k run secret-pod --image=busybox:1.35 --dry-run=client -o yaml -- sleep 3600 > delete.yaml
+
+When mounting volumes, you'll first need to define the volumes in the spec of the deployment or pod first. Then you can reference the volumn using volumeMounts inside a container.
+
+spec:
+  volumes:
+  - name: db-secret
+    secret:
+      secretName: db-secret
+
+
+image: busybox:1.35
+mountVolumes:
+   - name: db-secret
+      mountPath: /etc/db-config
